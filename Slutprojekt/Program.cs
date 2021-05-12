@@ -18,7 +18,7 @@ namespace Slutprojekt
             Console.WriteLine("Tryck 'Enter' för att fortsätta!");
             Console.ReadLine();
             Console.Clear();
-            // Börjar spelet efter titel
+            // Börjar spelet efter titel asdddddddddddddddd
             Del1();
         }
 
