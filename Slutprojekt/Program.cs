@@ -18,11 +18,13 @@ namespace Slutprojekt
             Console.WriteLine("Tryck 'Enter' för att fortsätta!");
             Console.ReadLine();
             Console.Clear();
-            // Börjar spelet efter titel asdddddddddddddddd,jkldsakdjaskldjaskl
+            // Börjar spelet efter titel
             Del1();
         }
 
-
+        /// <summary>
+        /// Inledning till spelet med tre alternativa vägar
+        /// </summary>
         static void Del1()
         {
             string användarensVal;
@@ -32,7 +34,6 @@ namespace Slutprojekt
             Console.WriteLine("Du känner att det ligger några saker i dina fickor, du lägger ut de framför dig.");
             Console.WriteLine("Du har:");
             Console.WriteLine("Ett brev, en telefon och en karta.");
-
             Console.WriteLine("Välj en utav dessa tre föremål att examinera:");
             Console.WriteLine("1. Brevet");
             Console.WriteLine("2. Telefonen");
@@ -57,6 +58,7 @@ namespace Slutprojekt
                     Console.WriteLine("Jag förväntar mig din hjälp!");
                     Console.WriteLine("Mvh");
                     Console.WriteLine("Dr.Lagoo");
+                    Console.ReadLine();
                     Console.WriteLine("Tryck 'Enter' för att fortsätta!");
                     Console.ReadLine();
                     Alternativ1();
@@ -79,11 +81,25 @@ namespace Slutprojekt
                 case "3":
                 case "kartan":
                     {
+                        Console.WriteLine("Du viker upp kartan för att se vart du befinner dig.");
+                        Console.WriteLine("Det verkar som att du är i hörnet av mappen och måste föja den röda linjen för attta dig fram till en kista.");
+                        Console.WriteLine("Du undersöker fram och baksidan av kartan ch märker att det står något på baksidan.");
+                        Console.WriteLine("Det står:");
                         Console.WriteLine("");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
-                        Console.WriteLine("");
+                        Console.WriteLine("Välkommen till min mystiska Ö!");
+                        Console.WriteLine("Jag hetter Dr.Lagoo och jag äger allt du ser på denna Ö");
+                        Console.WriteLine("Du undrar säkert varför just du är här, sanningen är att jag kidnappa fel person.");
+                        Console.WriteLine("Hur som helst, jag behöver din hjälp med att ta tillbaka en nyckel som Boris har stulit.");
+                        Console.WriteLine("Nyckeln tillhör en kista som är full med guld");
+                        Console.WriteLine("Du måste besegra Boris för att ta tillbaka nyckeln från honom.");
+                        Console.WriteLine("Självklart så kommer jag att ge dig hälften av det som ligger i kistan samt en resa tillbaka hem.");
+                        Console.WriteLine("Jag förväntar mig din hjälp!");
+                        Console.WriteLine("Mvh");
+                        Console.WriteLine("Dr.Lagoo");
+                        Console.ReadLine();
+                        Console.WriteLine("Tryck 'Enter' för att fortsätta!");
+                        Console.ReadLine();
+                        Alternativ1();
                         break;
                     }
 
@@ -98,6 +114,9 @@ namespace Slutprojekt
             }
         }
 
+        /// <summary>
+        /// Vill användaren hjälpa Dr.Lagoo?
+        /// </summary>
         static void Alternativ1()
         {
             string hjälpaLagoo = "";
@@ -122,8 +141,8 @@ namespace Slutprojekt
                 {
                     Console.WriteLine("Du krossar brevet i din hand och rullar ihop det till en liten boll.");
                     Console.WriteLine("Du ställer dig upp för att kasta den så långt som möjligt, sedan sätter du dig ner igen.");
-                    Console.WriteLine("Du bestämmer dig för att ta en kort tupp lur");
-                    Console.WriteLine("Du vakna alldrig eftersom du dog av hypotermi");
+                    Console.WriteLine("Du bestämmer dig för att ta en kort tupp lur.");
+                    Console.WriteLine("Du vakna alldrig eftersom du dog av kylan.");
                     Console.ReadLine();
                     Förlust();
                 }
@@ -139,7 +158,9 @@ namespace Slutprojekt
 
         static void Del2()
         {
-            Console.WriteLine("Du viker ihop papret och stoppar ner den i fickan");
+            Console.Clear();
+            Console.WriteLine("Du viker ihop papret och stoppar ner den i fickan.");
+            Console.WriteLine("");
         }
 
         static void Del3()
@@ -148,7 +169,7 @@ namespace Slutprojekt
         }
 
         /// <summary>
-        /// Du förlora spelet och väljer att avsluta eller ej
+        /// Du förlora spelet, vill du spea igen eller avsluta?
         /// </summary>
         static void Förlust()
         {
@@ -191,6 +212,9 @@ namespace Slutprojekt
             }
         }
 
+        /// <summary>
+        /// Du vinner, vill du spela igen eller avsluta?
+        /// </summary>
         static void Vinst()
         {
             string försökIgen = "";
