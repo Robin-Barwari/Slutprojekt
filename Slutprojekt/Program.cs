@@ -8,13 +8,16 @@ namespace Slutprojekt
         static string spelaIgen = "Vill du försöka igen? (j/n)";
 
         // Slumpar fram ett värde
-         static Random slump = new Random();
+        static Random slump = new Random();
+
+        // Försök igen
+        static string försökIgen = "";
 
         // Tryck på Enter för att fortsätta
         static string fortsättaMedspelet = "Tryck 'Enter' för att fortsätta!";
 
         // Användaren matar in fel
-        static string förstodEj = "Jag förstod inte riktigt vad du sa, tryck på enter för att skriva igen!";
+        static string förstodEj = "Jag förstod inte riktigt vad du sa, tryck på 'Enter' för att skriva igen!";
 
         static void Main(string[] args)
         {
@@ -56,6 +59,7 @@ namespace Slutprojekt
             Console.WriteLine("Ditt val: ");
             användarensVal = Console.ReadLine().ToLower();
             Console.Clear();
+
 
             switch (användarensVal)
             {
@@ -125,7 +129,6 @@ namespace Slutprojekt
             {
                 // alternativ när man förlorat
                 Console.Clear();
-                Console.WriteLine("");
                 Console.WriteLine("Tänker du hjälpa Dr.Lagoo? (j/n)");
                 hjälpaLagoo = Console.ReadLine().ToLower();
 
@@ -194,41 +197,84 @@ namespace Slutprojekt
                     int.TryParse(Console.ReadLine(), out ålder);
                 }
             }
-            Console.WriteLine("'Låter rimmligt, här får du nyckeln till kistan'");
-            Console.WriteLine(fortsättaMedspelet);
-            Console.Clear();
             Del3();
         }
 
         static void Del3()
         {
+            Console.Clear();
+            Console.WriteLine("'Låter rimmligt, här får du nyckeln till kistan'");
+            Console.WriteLine(fortsättaMedspelet);
+            Console.ReadLine();
+
+            Console.Clear();
             Console.WriteLine("Efter att du fått nyckeln från Boris så bestämmer du dig för att öppna kistan som ligger bakom honom.");
             Console.WriteLine("Kistan är proppfull med guld och olika smycken.");
+
             Console.WriteLine("Innan du hinner ta något så säger Boris: ");
             Console.WriteLine("'Dr.Lagoo väntar på dig där uppe'");
-            Console.WriteLine("Du ser att det finns trappor som ledder upp mot toppen av ett berg och du bestämmer dig för att gå upp mot Dr.Lagoo.");
-            Console.WriteLine("Lagoo står där uppe med ryggen vänd mot dig, han vekar stirra ut över kusten.");
+            Console.WriteLine("Du ser att det finns trappor som ledder upp mot toppen av ett berg.");
+            Console.WriteLine(fortsättaMedspelet);
+            Console.ReadLine();
+
+            Console.WriteLine("Du går upp för trapporna och ser Lagoo står där uppe med ryggen vänd mot dig, han vekar stirra ut över kusten.");
             Console.WriteLine("Han märker din närvaro och säger:");
             Console.WriteLine("'Jag ser att du har fått tag på nyckeln till kistan du håller i.'");
-            Console.WriteLine("'För att ta dig härifrån med min helikopter så måste du svara på en sista fråga'");
-            Console.WriteLine("'Stava ut ditt namn'");
+            Console.WriteLine("'För att ta dig härifrån med min helikopter så måste du svara på en sista fråga.'");
+            Console.WriteLine("'Kan du stava ut ditt namn?'");
+            Console.WriteLine(fortsättaMedspelet);
+            // kallar på metoden Skriv Vertikalt
             SkrivVertikalt(Console.ReadLine());
-            Console.WriteLine("Boris: '...'");
+
+            Console.WriteLine(fortsättaMedspelet);
             Console.ReadLine();
-            Console.WriteLine("Boris: 'Jag tar hälften av det som finns i kistan och du får i gengäld så får du nyckeln till helikoptern'");
-            Console.WriteLine("Du hoppar in i helikoptern och flyger iväg till frihet med en massa guld i baksätet.");
             Vinst();
         }
 
-        static void SkrivVertikalt(string meddelande)
+        /// <summary>
+        /// Skriver ut namnet bokstav för bokstav
+        /// </summary>
+        /// <param name="namn"></param>
+        static void SkrivVertikalt(string namn)
         {
             Console.Clear();
-            // Loopa igenom textan tecken för tecken
-            for (int i = 0; i < meddelande.Length; i++)
+            // Ifall meddelandet har ej tecken så loopas den
+            if (String.IsNullOrEmpty(namn))
             {
-                Console.WriteLine(meddelande[i]);
-            }
+                // Ifall meddelandet har ej tecken så loopas den
+                while (String.IsNullOrEmpty(namn))
+                {
+                    Console.Clear();
+                    Console.WriteLine("(Skriv in ditt namn för att konvertera det)");
 
+                    // Det användaren matar in
+                    namn = Console.ReadLine();
+                    // Ifall meddelandet har ej tecken så skriver den "försök igen"
+                    if (String.IsNullOrEmpty(namn))
+                    {
+                        Console.WriteLine(förstodEj);
+                        Console.ReadLine();
+                    }
+                    // Om den har tecken så skriver den ut namnet vertikalt
+                    else
+                    {
+                        // Loopa igenom namnet tecken för tecken
+                        for (int i = 0; i < namn.Length; i++)
+                        {
+                            Console.WriteLine(namn[i]);
+                        }
+                    }
+                }
+            }
+            // Om den har tecken så skriver den ut namnet vertikalt
+            else
+            {
+                // Loopa igenom textan tecken för tecken
+                for (int i = 0; i < namn.Length; i++)
+                {
+                    Console.WriteLine(namn[i]);
+                }
+            }
         }
 
 
@@ -237,8 +283,6 @@ namespace Slutprojekt
         /// </summary>
         static void Förlust()
         {
-            string försökIgen = "";
-
             // slumpar fram ett citat som ska stå på konsolen när du har förlorat
             string[] citatFörlust = {"Wow... det var intressant, visste inte man kunde dö så där.",
             "Du försökte åtminstonde", "Du suger, avinstallera programmet"};
@@ -280,13 +324,11 @@ namespace Slutprojekt
         /// </summary>
         static void Vinst()
         {
-            string försökIgen = "";
-
             while (försökIgen != "nej" && försökIgen != "n")
             {
-                Console.Clear();
-                Console.WriteLine("Jag gratulerar dig, du har lyckats vinna en väldigt kort och dum spel.");
-                Console.WriteLine("Hoppas du hade det roligt.");
+                // Text när du vinner
+                Console.WriteLine("'Jag gratulerar dig, du har lyckats vinna en väldigt kort och dum spel.'");
+                Console.WriteLine("'Hoppas du hade det roligt.'");
                 Console.WriteLine(spelaIgen);
                 försökIgen = Console.ReadLine().ToLower();
 
