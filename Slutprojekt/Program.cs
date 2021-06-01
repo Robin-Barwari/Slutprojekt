@@ -10,6 +10,8 @@ namespace Slutprojekt
         // Slumpar fram ett värde
         static Random slump = new Random();
 
+        static int check = 0;
+
         // Försök igen
         static string försökIgen = "";
 
@@ -43,78 +45,107 @@ namespace Slutprojekt
         static void Del1()
         {
             // Vad användaren väljer
-            string användarensVal;
+            string användarensVal = "";
 
-            // Intro till spelet
-            Console.Clear();
-            Console.WriteLine("Solen skinner på dig, du vaknar upp i en äng mitt ute i ingenstans.");
-            Console.WriteLine("Du känner att det ligger några saker i dina fickor, du lägger ut de framför dig.");
-            Console.WriteLine("Du har:");
-            Console.WriteLine("Ett brev, en telefon och en karta.");
-            Console.WriteLine("Välj en utav dessa tre föremål att examinera:");
-            Console.WriteLine("1. Brevet");
-            Console.WriteLine("2. Telefonen");
-            Console.WriteLine("3. Kartan");
-
-            Console.WriteLine("Ditt val: ");
-            användarensVal = Console.ReadLine().ToLower();
-            Console.Clear();
-
-
-            switch (användarensVal)
+            while (användarensVal != "1" || användarensVal != "brevet" || användarensVal != "2" || användarensVal != "telefonen" || användarensVal != "3" || användarensVal != "kartan")
             {
-                // Ifall användaren väljer brevet
-                case "1":
-                case "brevet":
-                    {
-                        BrevetsInnehåll();
-                        Console.ReadLine();
-                        Console.WriteLine("Du vänder på brevet och ser att det står:");
-                        Console.WriteLine("'Kolla på kartan'");
-                        UndersökerKarta();
-                        Console.ReadLine();
-                        HjälpaLagoo();
-                        break;
-                    }
+                // Intro till spelet
+                Console.Clear();
+                Console.WriteLine("Solen skinner på dig, du vaknar upp i en äng mitt ute i ingenstans.");
+                Console.WriteLine("Du känner att det ligger några saker i dina fickor, du lägger ut de framför dig.");
+                Console.WriteLine("Du har:");
+                Console.WriteLine("Ett brev, en telefon och en karta.");
+                Console.WriteLine("Välj en utav dessa tre föremål att examinera:");
+                Console.WriteLine("1. Brevet");
+                Console.WriteLine("2. Telefonen");
+                Console.WriteLine("3. Kartan");
 
-                // Ifall användaren väljer telefonen
-                case "2":
-                case "telefonen":
-                    {
-                        Console.WriteLine("Du bestämmer dig för att examinera telefonen.");
-                        Console.WriteLine("Det värkar som att den är avstängd, du testar att hålla ner på On/Off knappen och telefonen slås på!");
-                        Console.WriteLine("Hurra! Nu kan jag ringa efter hjälp! (tänker du)");
-                        Console.WriteLine("Du knappar in siffrorna '112' i telefonen och trycker på call.");
-                        Console.WriteLine("Mobilen sprängs i örat på dig och du dör på plats!");
-                        Console.ReadLine();
-                        Förlust();
-                        break;
-                    }
+                Console.WriteLine("Ditt val: ");
+                användarensVal = Console.ReadLine().ToLower();
+                Console.Clear();
 
-                // Ifall användaren väljer kartan
-                case "3":
-                case "kartan":
-                    {
-                        UndersökerKarta();
-                        Console.WriteLine("Du undersöker fram och baksidan av kartan och märker att det står något på baksidan.");
-                        Console.WriteLine("Det står:");
-                        Console.WriteLine("'Läs brevet'");
-                        Console.ReadLine();
-                        Console.WriteLine("Du öppnar kuveret, och det står:");
-                        BrevetsInnehåll();
-                        Console.ReadLine();
-                        HjälpaLagoo();
-                        break;
-                    }
 
-                default:
-                    {
-                        Console.WriteLine(förstodEj);
-                        Console.ReadLine();
-                        Del1();
-                        break;
-                    }
+                switch (användarensVal)
+                {
+                    // Ifall användaren väljer brevet
+                    case "1":
+                    case "brevet":
+                        {
+                            BrevetsInnehåll();
+                            Console.ReadLine();
+                            Console.WriteLine("Du vänder på brevet och ser att det står:");
+                            Console.WriteLine("'Kolla på kartan'");
+                            UndersökerKarta();
+                            Console.ReadLine();
+                            HjälpaLagoo();
+                            break;
+                        }
+
+                    // Ifall användaren väljer telefonen
+                    case "2":
+                    case "telefonen":
+                        {
+                            Console.WriteLine("Du bestämmer dig för att examinera telefonen.");
+                            Console.WriteLine("Det värkar som att den är avstängd, du testar att hålla ner på On/Off knappen och telefonen slås på!");
+                            Console.WriteLine("Hurra! Nu kan jag ringa efter hjälp! (tänker du)");
+                            Console.WriteLine("Du knappar in siffrorna '112' i telefonen och trycker på call.");
+                            Console.WriteLine("Mobilen sprängs i örat på dig och du dör på plats!");
+                            Console.ReadLine();
+                            Förlust();
+                            break;
+                        }
+
+                    // Ifall användaren väljer kartan
+                    case "3":
+                    case "kartan":
+                        {
+                            UndersökerKarta();
+                            Console.WriteLine("Du undersöker fram och baksidan av kartan och märker att det står något på baksidan.");
+                            Console.WriteLine("Det står:");
+                            Console.WriteLine("'Läs brevet'");
+                            Console.ReadLine();
+                            Console.WriteLine("Du öppnar kuveret, och det står:");
+                            BrevetsInnehåll();
+                            Console.ReadLine();
+                            HjälpaLagoo();
+                            break;
+                        }
+
+                    default:
+                        {
+                            Console.WriteLine(förstodEj);
+                            Console.ReadLine();
+                            break;
+                        }
+                }
             }
+        }
+
+        /// <summary>
+        /// Du undersöker kartan
+        /// </summary>
+        static void UndersökerKarta()
+        {
+            Console.WriteLine("Du viker upp kartan för att se vart du befinner dig.");
+            Console.WriteLine("Det verkar som att du är i hörnet av mappen och måste följa den röda linjen för att ta dig fram till krysset.");
+        }
+
+        /// <summary>
+        /// Text som står i brevet
+        /// </summary>
+        static void BrevetsInnehåll()
+        {
+            Console.WriteLine("Välkommen till min mystiska Ö!");
+            Console.WriteLine("Jag hetter Dr.Lagoo och jag äger allt du ser på denna Ö");
+            Console.WriteLine("Du undrar säkert varför just du är här, sanningen är att jag kidnappa fel person.");
+            Console.WriteLine("Hur som helst, jag behöver din hjälp med att ta tillbaka en nyckel som Boris har stulit.");
+            Console.WriteLine("Nyckeln tillhör en kista som är full med guld");
+            Console.WriteLine("Du måste besegra Boris för att ta tillbaka nyckeln från honom.");
+            Console.WriteLine("Självklart så kommer jag att ge dig hälften av det som ligger i kistan samt en resa tillbaka hem.");
+            Console.WriteLine("Jag förväntar mig din hjälp!");
+            Console.WriteLine("Mvh");
+            Console.WriteLine("Dr.Lagoo");
+            Console.WriteLine(fortsättaMedspelet);
         }
 
         /// <summary>
@@ -176,7 +207,13 @@ namespace Slutprojekt
             Console.WriteLine("'Frågan lyder till såhär:'");
             Console.WriteLine("'Hur gammal är du?'");
             int.TryParse(Console.ReadLine(), out ålder);
+            Ålderfråga(ålder);
 
+            Del3();
+        }
+
+        static int Ålderfråga(int ålder)
+        {
             // Ifall du är mindre än 70
             while (ålder < 70)
             {
@@ -197,7 +234,7 @@ namespace Slutprojekt
                     int.TryParse(Console.ReadLine(), out ålder);
                 }
             }
-            Del3();
+            return ålder;
         }
 
         static void Del3()
@@ -235,7 +272,7 @@ namespace Slutprojekt
         /// Skriver ut namnet bokstav för bokstav
         /// </summary>
         /// <param name="namn"></param>
-        static void SkrivVertikalt(string namn)
+        static string SkrivVertikalt(string namn)
         {
             Console.Clear();
             // Ifall meddelandet har ej tecken så loopas den
@@ -275,6 +312,7 @@ namespace Slutprojekt
                     Console.WriteLine(namn[i]);
                 }
             }
+            return namn;
         }
 
 
@@ -295,26 +333,36 @@ namespace Slutprojekt
                 // alternativ när man förlorat
                 Console.Clear();
                 Console.WriteLine(förlustText);
-                Console.WriteLine(spelaIgen);
-                försökIgen = Console.ReadLine().ToLower();
-
-                // användaren dras tillbaka till början
-                if (försökIgen == "ja" || försökIgen == "j")
+                if (check < 3)
                 {
-                    Titel();
+                    Console.WriteLine(spelaIgen);
+                    försökIgen = Console.ReadLine().ToLower();
+                    // användaren dras tillbaka till början
+                    if (försökIgen == "ja" || försökIgen == "j")
+                    {
+                        check++;
+                        Titel();
+                    }
+
+                    // användaren avslutar programmet
+                    else if (försökIgen == "nej" || försökIgen == "n")
+                    {
+                        Console.WriteLine("Bättre lycka nästa gång!");
+                        Environment.Exit(0);
+                    }
+
+                    // användaren matar in fel svar
+                    else
+                    {
+                        Console.WriteLine(förstodEj);
+                        Console.ReadLine();
+                    }
                 }
-
-                // användaren avslutar programmet
-                else if (försökIgen == "nej" || försökIgen == "n")
+                else if (check >= 3)
                 {
-                    Console.WriteLine("Bättre lycka nästa gång!");
-                }
-
-                // användaren matar in fel svar
-                else
-                {
-                    Console.WriteLine(förstodEj);
-                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("Du har använt dig utav alla dina försök. Hej då!");
+                    Environment.Exit(0);
                 }
             }
         }
@@ -342,6 +390,7 @@ namespace Slutprojekt
                 else if (försökIgen == "nej" || försökIgen == "n")
                 {
                     Console.WriteLine("Tack och hej, leverpastej!");
+                    Environment.Exit(0);
                 }
 
                 // användaren matar in fel svar
@@ -352,35 +401,5 @@ namespace Slutprojekt
                 }
             }
         }
-
-        /// <summary>
-        /// Du undersöker kartan
-        /// </summary>
-        static void UndersökerKarta()
-        {
-            Console.WriteLine("Du viker upp kartan för att se vart du befinner dig.");
-            Console.WriteLine("Det verkar som att du är i hörnet av mappen och måste följa den röda linjen för att ta dig fram till krysset.");
-        }
-
-
-        /// <summary>
-        /// Text som står i brevet
-        /// </summary>
-        static void BrevetsInnehåll()
-        {
-            Console.WriteLine("Välkommen till min mystiska Ö!");
-            Console.WriteLine("Jag hetter Dr.Lagoo och jag äger allt du ser på denna Ö");
-            Console.WriteLine("Du undrar säkert varför just du är här, sanningen är att jag kidnappa fel person.");
-            Console.WriteLine("Hur som helst, jag behöver din hjälp med att ta tillbaka en nyckel som Boris har stulit.");
-            Console.WriteLine("Nyckeln tillhör en kista som är full med guld");
-            Console.WriteLine("Du måste besegra Boris för att ta tillbaka nyckeln från honom.");
-            Console.WriteLine("Självklart så kommer jag att ge dig hälften av det som ligger i kistan samt en resa tillbaka hem.");
-            Console.WriteLine("Jag förväntar mig din hjälp!");
-            Console.WriteLine("Mvh");
-            Console.WriteLine("Dr.Lagoo");
-            Console.WriteLine(fortsättaMedspelet);
-        }
-
-
     }
 }
